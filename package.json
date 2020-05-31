@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check",
-    "deploy": "ng serve --host 0.0.0.0 --disable-host-check --port 80",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config config/proxy.dev.local.json",
+    "remote": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config config/proxy.dev.remote.json",
+    "deploy": "ng serve --host 0.0.0.0 --disable-host-check --port 80 --proxy-config config/proxy.dev.remote.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

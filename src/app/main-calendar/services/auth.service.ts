@@ -53,11 +53,13 @@ export class AuthService implements OnInit {
       }))
       .subscribe((user: UserData) => {
         this.userData.next(user);
+      }, (error) => {
+        this.logout();
       });
   }
 
   public logout(): void {
-    localStorage.removeItem(HttpHeader.X_SECURITY_TOKEN)
+    localStorage.removeItem(HttpHeader.X_SECURITY_TOKEN);
     this.userData.next(null);
   }
 }

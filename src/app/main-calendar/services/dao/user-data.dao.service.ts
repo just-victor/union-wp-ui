@@ -11,6 +11,6 @@ export class UserDataDaoService {
   constructor(private apiService: ApiService) {}
 
   public getUserData(): Observable<HttpResponse<UserData>> {
-    return this.apiService.get(`${UserDataDaoService.URL}/getUserData`);
+    return this.apiService.get(`${UserDataDaoService.URL}getUserData`);
   }
 }
