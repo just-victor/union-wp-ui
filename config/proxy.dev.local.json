@@ -1,0 +1,4 @@
+{
+  "/service": "http://localhost:8080",
+  "/api": "http://localhost:8888"
+}

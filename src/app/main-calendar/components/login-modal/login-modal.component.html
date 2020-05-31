@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Телефон</mat-label>
+    <input matInput
+           [(ngModel)]="loginData.telephone"
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Пароль</mat-label>
+    <input matInput
+           [(ngModel)]="loginData.password"
+    >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="loginData" cdkFocusInitial>Войти</button>
+</div>

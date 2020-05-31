@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" style="margin-bottom: 10px">
+  <mat-toolbar-row style="align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;">
+    <div style="display: inline-flex">
+      <button  *ngIf="!(authService.userData | async)" mat-button class="lol" (click)="registration()">
+        Регистрация
+      </button>
+      <button  *ngIf="!(authService.userData | async)" mat-button class="lol" (click)="login()">
+        Войти
+      </button>
+    </div>
+    <div style="display: inline-flex">
+      <span *ngIf="authService.userData | async">Привет {{authService.userData.getValue().name}}</span>
+      <button *ngIf="authService.userData | async" mat-button class="lol" (click)="logout()">
+        <mat-icon aria-hidden="false" aria-label="logout">exit_to_app</mat-icon>
+      </button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

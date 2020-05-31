@@ -1,0 +1,91 @@
+<div mat-dialog-content>
+  <h6 class="alert alert-danger" *ngIf="disableForUser()"><small>{{APPROVED_MESSAGE}}</small></h6>
+  <mat-form-field *ngIf="data.isAdmin">
+    <mat-label>Имя</mat-label>
+    <input matInput
+           [(ngModel)]="event.userName"
+    >
+  </mat-form-field>
+  <mat-checkbox *ngIf="data.isAdmin"
+    [(ngModel)]="event.approved">
+  </mat-checkbox>
+
+
+  <mat-form-field *ngIf="data.isAdmin">
+    <mat-label>Телефон</mat-label>
+    <div style="display: inline-flex">
+      <input matInput
+             type="tel"
+             [(ngModel)]="event.telephone"
+      >
+      <a href="tel:{{event.telephone}}">
+        <i class="fas fa-phone"></i>
+      </a>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>День</mat-label>
+    <input matInput
+           [min]="minDate"
+           [(ngModel)]="event.dateStart"
+           [matDatepicker]="picker"
+           [disabled]="disableForUser()"
+    >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div class="selection-time">
+    <div>
+      <mat-label>Время </mat-label>
+      <div class="selection-time">
+        <mat-form-field class="time-selector time-selector__left">
+          <mat-label>c </mat-label>
+          <input matInput
+                 [value]="getTimeFrom()"
+                 [disabled]="true"
+          >
+        </mat-form-field>
+        <mat-form-field class="time-selector time-selector__right">
+          <mat-label>по</mat-label>
+          <input matInput
+                 [value]="getTimeTo()"
+                 [readonly]="true"
+                 [disabled]="disableForUser()"
+          >
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <button mat-button class="lol"
+              [disabled]="disableForUser()"
+              (click)="increaseTime()">
+        <mat-icon aria-hidden="false" aria-label="Increase time">arrow_upward</mat-icon>
+      </button>
+      <button mat-button class="lol"
+              [disabled]="disableForUser()"
+              (click)="decreaseTime()">
+        <mat-icon aria-hidden="false" aria-label="Decrease time">arrow_downward</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="total-time-label">
+    <mat-label> {{totalReservationTime()}} минут </mat-label>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Комментарий</mat-label>
+    <textarea matInput placeholder="Нас будет 10"
+              [(ngModel)]="event.comment"
+    ></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Передумал</button>
+  <button mat-button
+          [mat-dialog-close]="data" cdkFocusInitial
+  >Забронировать</button>
+</div>

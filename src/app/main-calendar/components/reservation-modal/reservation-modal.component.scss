@@ -1,0 +1,28 @@
+.selection-time {
+  display: inline-flex;
+}
+.time-selector {
+  width:80px !important;
+  &__left {
+    margin-right: 10px;
+  }
+  &__right {
+    margin-left: 10px;
+  }
+}
+
+.lol {
+  padding: 0;
+  margin: 0;
+  min-width: 35px;
+  min-height: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-time-label {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 30px;
+}
