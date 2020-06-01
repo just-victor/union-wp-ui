@@ -5,7 +5,7 @@
     "ng": "ng",
     "local": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config config/proxy.dev.local.json",
     "dev": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config config/proxy.dev.remote.json",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check --port 80 --proxy-config config/proxy.dev.remote.json",
+    "start": "ng serve --proxy-config config/proxy.dev.remote.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
