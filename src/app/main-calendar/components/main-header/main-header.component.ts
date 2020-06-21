@@ -12,7 +12,7 @@ export class MainHeaderComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
     ) { }
 
   public ngOnInit(): void {
@@ -27,7 +27,11 @@ export class MainHeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data: LoginData) => {
       data.password = btoa(data.password);
-      this.authService.login(data);
+      if (data.isLoginRequest) {
+        this.authService.login(data);
+      } else {
+        this.authService.register(data);
+      }
     })
   }
 

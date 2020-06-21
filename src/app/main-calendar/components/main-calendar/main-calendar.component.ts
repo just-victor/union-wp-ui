@@ -203,4 +203,15 @@ export class MainCalendarComponent implements OnInit {
     const comment = this.isEventAvailable(event) ? `${event.comment ? event.comment : ''}` : "";
     return  `${event.userName} | ${(event.dateEnd.getTime() - event.dateStart.getTime()) / 60000} минут | ${comment}`;
   }
+
+  public getFormattedDay(): string {
+    let currentDay = 0;
+    if (this.view == CalendarView.Day) {
+       currentDay = new Date().getDate();
+    } else {
+      currentDay = new Date().getMonth();
+    }
+
+    return currentDay > 9 ? `${currentDay}` : `0${currentDay}`
+  }
 }

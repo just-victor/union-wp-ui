@@ -11,8 +11,6 @@ app-main-header {
 
 @media screen and (min-width: 100px) {
   app-main-calendar {
-    padding-left: 10px;
-    padding-right: 10px;
     width: 99%;
   }
 }

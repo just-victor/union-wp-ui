@@ -8,6 +8,8 @@ import {LoginData} from "../components/login-modal/login-modal.component";
 import {AuthDaoService} from "./dao/auth.dao.service";
 import {HttpHeader} from "../../common/enums/http.enum";
 import {BehaviorSubject} from "rxjs";
+import {SnackBarComponent} from "../components/snack-bar/snack-bar.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable()
 export class AuthService implements OnInit {
@@ -15,6 +17,7 @@ export class AuthService implements OnInit {
   constructor(
     private userDataDaoService: UserDataDaoService,
     private authDaoService: AuthDaoService,
+    private _snackBar: MatSnackBar,
     ) {}
 
   public ngOnInit(): void {
@@ -25,11 +28,41 @@ export class AuthService implements OnInit {
     return this.userData.getValue()?.isAdmin;
   }
 
+  openSnackBar(message: string, matType: string) {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      data: {
+        message
+      },
+      panelClass: ['mat-toolbar', matType],
+      verticalPosition: "top"
+    });
+  }
+
   public login(data: LoginData): void {
+    if (!data.telephone) {
+      return;
+    }
+
+    data.telephone = '+380' + data.telephone;
     this.authDaoService.login(data).subscribe((token: string) => {
       localStorage.setItem(HttpHeader.X_SECURITY_TOKEN, token);
       this.loadUserData();
+    }, error => {
+      this.openSnackBar(error.error.message, 'mat-warn');
     });
+  }
+
+  public register(data: LoginData): void {
+    if (!data.telephone) {
+      return;
+    }
+
+    data.telephone = '+380' + data.telephone;
+    this.authDaoService.register(data).subscribe((s: string) => {
+      this.openSnackBar("Вы успешно зарегистрированы", 'mat-accent');
+    }, error => {
+      this.openSnackBar(error.error.message, 'mat-warn');
+    })
   }
 
   public get securityToken(): string {

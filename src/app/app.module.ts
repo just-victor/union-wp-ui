@@ -20,6 +20,9 @@ import {LoginModalComponent} from './main-calendar/components/login-modal/login-
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {NgxMaskModule} from "ngx-mask";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { SnackBarComponent } from './main-calendar/components/snack-bar/snack-bar.component';
 
 registerLocaleData(localeRu);
 
@@ -27,7 +30,8 @@ registerLocaleData(localeRu);
   declarations: [
     AppComponent,
     MainHeaderComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,8 @@ registerLocaleData(localeRu);
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    MatSnackBarModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     ApiService,

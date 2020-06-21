@@ -24,6 +24,7 @@ export enum MimeType {
 export enum HttpHeader {
   X_CLIENT_VERSION = "X-Client-Version",
   X_SECURITY_TOKEN = "X-Security-Token",
+  AUTHORIZATION = "Authorization",
   X_CLIENT_TOKEN = "X-Client-Token"
 }
 

@@ -6,3 +6,51 @@ pre {
   background-color: #f5f5f5;
   padding: 15px;
 }
+
+.navigation-button {
+  margin: 0;
+  padding: 0 6px;
+  min-width: fit-content;
+}
+
+.current-date-label {
+  padding: 0 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7b20a1;
+}
+
+.period-button {
+  margin: 0;
+  padding: 0 6px;
+  min-width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.period-buttons {
+  /*background: cadetblue;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subheader {
+  /*background: aquamarine;*/
+  display: flex;
+  justify-content: space-around;
+}
+
+.navigation-buttons {
+  /*background: antiquewhite;*/
+  display: flex;
+}
+
+.lol {
+  font-size: 12px;
+  position: absolute;
+  left: 11px;
+  top: 3px;
+  height: 0;
+}

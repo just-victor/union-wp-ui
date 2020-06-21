@@ -16,6 +16,8 @@
     <div style="display: inline-flex">
       <input matInput
              type="tel"
+             prefix="+380"
+             mask=" (00) 000 00 00"
              [(ngModel)]="event.telephone"
       >
       <a href="tel:{{event.telephone}}">
@@ -87,5 +89,5 @@
   <button mat-button (click)="onNoClick()">Передумал</button>
   <button mat-button
           [mat-dialog-close]="data" cdkFocusInitial
-  >Забронировать</button>
+  >Бронь</button>
 </div>

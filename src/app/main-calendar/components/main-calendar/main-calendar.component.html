@@ -1,51 +1,41 @@
-<div class="row text-center">
-  <div class="col-md-4">
-    <div class="btn-group">
-      <div
-        class="btn btn-primary"
-        mwlCalendarPreviousView
-        [view]="view"
-        [(viewDate)]="viewDate"
-      >
-        <
-      </div>
-      <div
-        class="btn btn-outline-secondary"
-        mwlCalendarToday
-        [(viewDate)]="viewDate"
-      >
-        Сегодня
-      </div>
-      <div
-        class="btn btn-primary"
-        mwlCalendarNextView
-        [view]="view"
-        [(viewDate)]="viewDate"
-      >
-        >
-      </div>
-    </div>
+<div class="subheader">
+  <div class="current-date-label">
+    <mat-label class="current-date-label">{{ viewDate | calendarDate:(view + 'ViewTitle'): locale }}</mat-label>
   </div>
-  <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'): locale }}</h3>
+  <div class="period-buttons">
+    <button mat-button class="period-button"
+            (click)="setView(CalendarView.Month)"
+            [class.active]="view === CalendarView.Month"
+    >
+      Месяц
+    </button>
+    <button mat-button class="period-button"
+            (click)="setView(CalendarView.Day)"
+            [class.active]="view === CalendarView.Day"
+    >
+      День
+    </button>
   </div>
-  <div class="col-md-4">
-    <div class="btn-group">
-      <div
-        class="btn btn-primary"
-        (click)="setView(CalendarView.Month)"
-        [class.active]="view === CalendarView.Month"
-      >
-        Месяц
-      </div>
-      <div
-        class="btn btn-primary"
-        (click)="setView(CalendarView.Day)"
-        [class.active]="view === CalendarView.Day"
-      >
-        День
-      </div>
-    </div>
+  <div class="navigation-buttons">
+    <button mat-button mwlCalendarPreviousView class="navigation-button"
+            [view]="view"
+            [(viewDate)]="viewDate"
+    >
+      <mat-icon aria-hidden="false" aria-label="logout">keyboard_arrow_left</mat-icon>
+    </button>
+    <button mat-button mwlCalendarToday class="navigation-button"
+            [(viewDate)]="viewDate"
+    >
+      <span class="lol">{{getFormattedDay()}}</span>
+      <mat-icon aria-hidden="false" aria-label="logout">calendar_today</mat-icon>
+
+    </button>
+    <button mat-button mwlCalendarNextView class="navigation-button"
+            [view]="view"
+            [(viewDate)]="viewDate"
+    >
+      <mat-icon aria-hidden="false" aria-label="logout">keyboard_arrow_right</mat-icon>
+    </button>
   </div>
 </div>
 <br />
@@ -63,7 +53,7 @@
   </mwl-calendar-month-view>
   <div *ngIf="view === CalendarView.Day" style="display: flex; flex-wrap: wrap;">
     <div class="col-md-6" >
-      <h3 style="text-align: center">Левая канатка</h3>
+      <h5 style="text-align: center">Левая канатка</h5>
       <mwl-calendar-day-view
                              *ngSwitchCase="CalendarView.Day"
                              [viewDate]="viewDate"
@@ -79,7 +69,7 @@
     </div>
 
     <div class="col-md-6">
-      <h3 style="text-align: center">Правая канатка</h3>
+      <h5 style="text-align: center">Правая канатка</h5>
       <mwl-calendar-day-view
                              *ngSwitchCase="CalendarView.Day"
                              [viewDate]="viewDate"

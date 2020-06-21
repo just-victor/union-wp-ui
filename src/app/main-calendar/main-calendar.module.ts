@@ -27,6 +27,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {AuthService} from "./services/auth.service";
 import {UserDataDaoService} from "./services/dao/user-data.dao.service";
 import {AuthDaoService} from "./services/dao/auth.dao.service";
+import {NotifierModule} from "angular-notifier";
+import {NgxMaskModule} from "ngx-mask";
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import {AuthDaoService} from "./services/dao/auth.dao.service";
     MatButtonModule,
     MatInputModule,
     FontAwesomeModule,
+    NotifierModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 export class MainCalendarModule { }

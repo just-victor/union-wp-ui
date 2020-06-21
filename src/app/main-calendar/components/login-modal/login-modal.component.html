@@ -1,18 +1,30 @@
 <div mat-dialog-content>
+  <mat-form-field *ngIf="!loginData.isLoginRequest">
+    <mat-label>Имя</mat-label>
+    <input matInput
+           [(ngModel)]="loginData.name"
+    >
+  </mat-form-field>
   <mat-form-field>
     <mat-label>Телефон</mat-label>
-    <input matInput
+    <input matInput required prefix="+380" mask=" (00) 000 00 00"
            [(ngModel)]="loginData.telephone"
     >
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Пароль</mat-label>
-    <input matInput
+    <input matInput required
+           [type]="hide ? 'password' : 'text'"
            [(ngModel)]="loginData.password"
     >
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="loginData" cdkFocusInitial>Войти</button>
+  <button mat-button *ngIf="loginData.isLoginRequest" (click)="register()">Регистрация</button>
+  <button mat-button *ngIf="loginData.isLoginRequest" [mat-dialog-close]="loginData" (click)="login()" [disabled]="isValid()">Войти</button>
+  <button mat-button *ngIf="!loginData.isLoginRequest" [mat-dialog-close]="loginData" [disabled]="isValid()">Зарегистрироваться</button>
 </div>

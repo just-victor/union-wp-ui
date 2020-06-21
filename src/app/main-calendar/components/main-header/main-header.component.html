@@ -1,21 +1,20 @@
 <mat-toolbar color="primary" style="margin-bottom: 10px">
-  <mat-toolbar-row style="align-items: flex-end;
-    flex-direction: column;
-    justify-content: center;">
-    <div style="display: inline-flex">
-      <button  *ngIf="!(authService.userData | async)" mat-button class="lol" (click)="registration()">
-        Регистрация
-      </button>
-      <button  *ngIf="!(authService.userData | async)" mat-button class="lol" (click)="login()">
-        Войти
-      </button>
+  <mat-toolbar-row class="toolbar-row">
+    <div class="left-div">
+      <div style="margin: 0 8px">Union Wake Park</div>
     </div>
-    <div style="display: inline-flex">
-      <span *ngIf="authService.userData | async">Привет {{authService.userData.getValue().name}}</span>
-      <button *ngIf="authService.userData | async" mat-button class="lol" (click)="logout()">
-        <mat-icon aria-hidden="false" aria-label="logout">exit_to_app</mat-icon>
-      </button>
+    <div class="right-div">
+      <div *ngIf="!(authService.userData | async)" style="display: inline-flex">
+        <button mat-button class="lol" (click)="login()">
+          Войти
+        </button>
+      </div>
+      <div *ngIf="authService.userData | async" class="user-info">
+        <span>{{authService.userData.getValue().name}}</span>
+        <button mat-button class="logout-button" (click)="logout()">
+          <mat-icon aria-hidden="false" aria-label="logout">exit_to_app</mat-icon>
+        </button>
+      </div>
     </div>
-
   </mat-toolbar-row>
 </mat-toolbar>
